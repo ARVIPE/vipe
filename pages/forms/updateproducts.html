@@ -97,7 +97,7 @@
   const idValue = urlParams.get('id');
   
   fetch(
-			"https://sheet.best/api/sheets/ad746c9f-c247-4447-8eb9-4e2e1b84d6c0/tabs/Productos/ID_Producto/" +
+			"https://sheet.best/api/sheets/b30a3d7a-d7eb-45d3-9207-f48948bc15f5/tabs/Productos/ID_Producto/" +
         idValue
 		)
 			.then((response) => response.json())
@@ -150,7 +150,7 @@
         };
 
         // Add one line to the sheet
-        fetch("https://sheet.best/api/sheets/ad746c9f-c247-4447-8eb9-4e2e1b84d6c0/tabs/Productos/ID_Producto/" +
+        fetch("https://sheet.best/api/sheets/b30a3d7a-d7eb-45d3-9207-f48948bc15f5/tabs/Productos/ID_Producto/" +
         idValue, {
         method: "PATCH",
         mode: "cors",
