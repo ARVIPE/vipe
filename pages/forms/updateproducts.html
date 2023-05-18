@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | General Form Elements</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+</head>
+<body>
+
+
+      <!-- Main content -->
+      <section class="content" style="margin-top: 10%;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-3"></div>
+              <!-- left column -->
+              <div class="col">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                  <div class="card-header">
+                    <h3 class="card-title">Modificar producto</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <!-- form start -->
+                  <form action="javascript:myFunction()">
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">ID Producto</label>
+                        <input type="string" class="form-control" id="idProducto"  placeholder="Introducir Id" disabled>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Nombre</label>
+                        <input type="string" class="form-control" id="nombre"  placeholder="Introduce un nombre" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Precio venta/ud</label>
+                        <input type="string" class="form-control" id="precio"  placeholder="Introduzca un precio" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Categoria</label>
+                        <input type="string" class="form-control" id="categoria"  placeholder="Introduzca una categoria" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Stock</label>
+                        <input type="string" class="form-control" id="stock" placeholder="Introduzca el stock" disabled>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Imagen1</label>
+                        <input type="string" class="form-control" id="image1" placeholder="Introduzca una URL con una imagen" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Imagen2</label>
+                        <input type="string" class="form-control" id="image2" placeholder="Introduzca una URL con una imagen" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Imagen3</label>
+                        <input type="string" class="form-control" id="image3" placeholder="Introduzca una URL con una imagen" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Unidad</label>
+                        <input type="string" class="form-control" id="unidad"  placeholder="Introduzca el la unidad" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Descripcion</label>
+                        <input type="string" class="form-control" id="descripcion" placeholder="Introduzca la descripción del producto" required>
+                      </div>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" onclick="window.location.href='file:///home/arvipe/Escritorio/vipe/pages/tables/data.html'" class="btn btn-secondary">Volver</button>
+                    </div>
+                  </form>
+                </div>
+                <!-- /.card -->
+              </div>  
+              <div class="col-3"></div>
+        </div>
+    </div>
+
+
+</body>
+
+<script src="https://sbt.0soft.dev/sheet-best-templates.min.js"></script>
+
+
+<script>
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const idValue = urlParams.get('id');
+  
+  fetch(
+			"https://sheet.best/api/sheets/ad746c9f-c247-4447-8eb9-4e2e1b84d6c0/tabs/Productos/ID_Producto/" +
+        idValue
+		)
+			.then((response) => response.json())
+			.then((data) => {
+				console.log(data);
+				const inputId = document.querySelector("#idProducto");
+        const inputNombre = document.querySelector("#nombre");
+        const inputPrecio = document.querySelector("#precio");
+        const categoria = document.querySelector("#categoria");
+        const stock = document.querySelector("#stock");
+        const image1 = document.querySelector("#image1");
+        const image2 = document.querySelector("#image2");
+        const image3 = document.querySelector("#image3");
+        const unidad = document.querySelector("#unidad");
+        const descripcion = document.querySelector("#descripcion");
+        
+				data.forEach((item, index) => {
+            inputId.setAttribute("value", item.ID_Producto);
+            inputNombre.setAttribute("value", item.Nombre);
+            inputPrecio.setAttribute("value", item.Precio_venta_ud);
+            categoria.setAttribute("value", item.Categoria);
+            stock.setAttribute("value", item.Stock);
+            image1.setAttribute("value", item.Image_1);
+            image2.setAttribute("value", item.Image_2);
+            image3.setAttribute("value", item.Image_3);
+            unidad.setAttribute("value", item.Unidad);
+            descripcion.setAttribute("value", item.Descripción);
+
+          
+				});
+
+			})
+			.catch((error) => {
+				console.error(error); 
+			});
+
+      function myFunction(){
+
+        const data = {
+        ID_Producto: document.getElementById('idProducto').value,
+        Nombre: document.getElementById('nombre').value,
+        Precio_venta_ud: document.getElementById('precio').value,
+        Categoria: document.getElementById('categoria').value,
+        Stock: document.getElementById('stock').value,
+        Image_1: document.getElementById('image1').value,
+        Image_2: document.getElementById('image2').value,
+        Image_3: document.getElementById('image3').value,
+        Unidad: document.getElementById('unidad').value,
+        Descripción: document.getElementById('descripcion').value,
+        };
+
+        // Add one line to the sheet
+        fetch("https://sheet.best/api/sheets/ad746c9f-c247-4447-8eb9-4e2e1b84d6c0/tabs/Productos/ID_Producto/" +
+        idValue, {
+        method: "PATCH",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          Nombre: data.Nombre,
+          Precio_venta_ud: data.Precio_venta_ud,
+          Categoria: data.Categoria,
+          Image_1: data.Image_1,
+          Image_2: data.Image_2,
+          Image_3: data.Image_3,
+          Unidad: data.Unidad,
+          Descripción: data.Descripción,
+        }),
+        })
+        .then((r) => r.json())
+        .then((data) => {
+          // The response comes here
+          console.log(data);
+          alert("Insertado Correctamente");
+        })
+        .catch((error) => {
+          // Errors are reported there
+          console.log(error);
+          console.log("ERROR: al insertar");
+        });
+
+        }
+</script>
+
+
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- bs-custom-file-input -->
+<script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+</body>
+</html>

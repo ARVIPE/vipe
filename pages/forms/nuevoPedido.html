@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | General Form Elements</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+</head>
+<body>
+
+
+      <!-- Main content -->
+      <section class="content" style="margin-top: 10%;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-3"></div>
+              <!-- left column -->
+              <div class="col">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                  <div class="card-header">
+                    <h3 class="card-title">Realizar un pedido</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <!-- form start -->
+                  <form action="javascript:myFunction()">
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Nombre</label>
+                        <select class="form-control" id="idProducto" data-sheet-best="https://sheet.best/api/sheets/92059a58-190b-4d6e-bb8a-637fab071539/tabs/Productos">
+                            {% productos.forEach(producto => { %}
+                            <option value="{{ ID_Producto }}">{{ Nombre }}</option>
+                            {% }); %}
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Unidades</label>
+                        <input type="number" class="form-control" id="unidades" placeholder="Introduzca una cantidad" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Empresa</label>
+                        <select class="form-control" id="idproveedor" data-sheet-best="https://sheet.best/api/sheets/92059a58-190b-4d6e-bb8a-637fab071539/tabs/Proveedores">
+                            {% productos.forEach(producto => { %}
+                            <option value="{{ ID_Proveedor }}">{{ Empresa }}</option>
+                            {% }); %}
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Productor</label>
+                        <select class="form-control" id="idproductor"  data-sheet-best="https://sheet.best/api/sheets/92059a58-190b-4d6e-bb8a-637fab071539/tabs/Productores">
+                            {% productos.forEach(producto => { %}
+                            <option value="{{ ID_Productor }}">{{ Empresa }}</option>
+                            {% }); %}
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Transporte</label>
+                        <select class="form-control" id="idtransporte" data-sheet-best="https://sheet.best/api/sheets/92059a58-190b-4d6e-bb8a-637fab071539/tabs/Transportes">
+                            {% productos.forEach(producto => { %}
+                            <option value="{{ ID_Transporte }}">{{ Empresa }} -- {{ Medio }}</option>
+                            {% }); %}
+                        </select>
+                      </div>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" onclick="window.location.href='file:///home/arvipe/Escritorio/vipe/index.html'" class="btn btn-secondary">Volver</button>
+                    </div>
+                  </form>
+                </div>
+                <!-- /.card -->
+              </div>  
+              <div class="col-3"></div>
+        </div>
+    </div>
+
+
+</body>
+
+<script>
+
+  function myFunction(){
+
+    var contador = 2;
+
+    fetch("https://sheet.best/api/sheets/ad746c9f-c247-4447-8eb9-4e2e1b84d6c0/tabs/Pedidos", {
+    method: "GET",
+    mode: "cors",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    })
+    .then((r) => r.json())
+    .then((data) => {
+    data.forEach((element) => {
+        contador++;
+    });
+
+    var idPedido = '=IFS(B17<>""; FILA()-1; B17=""; "")'    
+    var nombre = '=IFNA(BUSCARV(B18;Productos!A:B;2);"")';
+    var costeCompra = '=IFS(A15=""; ""; IFNA(BUSCARV(E15;Proveedores!A:G;7);"")*D15; IFNA(BUSCARV(E15;Proveedores!A:G;7);"")*D15)';
+    var costeProcesamiento = '=IFS(A16=""; ""; IFNA(BUSCARV(G16;Productores!A:G;7);"")*D16; IFNA(BUSCARV(G16;Productores!A:G;7);"")*D16)';
+    var distanciaProv = '=IFS(A16=""; ""; 6371*ACOS(COS(RADIANES(90-IFNA(BUSCARV(E16; Proveedores!A:F; 6); "")))*COS(RADIANES(90-IFNA(BUSCARV(G16; Productores!A:F; 6); "")))+SENO(RADIANES(90-IFNA(BUSCARV(E16; Proveedores!A:F; 6); "")))*SENO(RADIANES(90-IFNA(BUSCARV(G16; Productores!A:F; 6); "")))*COS(RADIANES(IFNA(BUSCARV(E16; Proveedores!A:F; 5); "")-IFNA(BUSCARV(G16; Productores!A:F; 5); ""))))>0; 6371*ACOS(COS(RADIANES(90-IFNA(BUSCARV(E16; Proveedores!A:F; 6); "")))*COS(RADIANES(90-IFNA(BUSCARV(G16; Productores!A:F; 6); "")))+SENO(RADIANES(90-IFNA(BUSCARV(E16; Proveedores!A:F; 6); "")))*SENO(RADIANES(90-IFNA(BUSCARV(G16; Productores!A:F; 6); "")))*COS(RADIANES(IFNA(BUSCARV(E16; Proveedores!A:F; 5); "")-IFNA(BUSCARV(G16; Productores!A:F; 5); "")))))';
+    var distanciaProdAlmacen = '=IFS(A16=""; ""; 6371*ACOS(COS(RADIANES(90-IFNA(BUSCARV(G16; Productores!A:F; 6); "")))*COS(RADIANES(90-(-4,724924)))+SENO(RADIANES(90-IFNA(BUSCARV(G16; Productores!A:F; 6); "")))*SENO(RADIANES(90-(-4,724924)))*COS(RADIANES(IFNA(BUSCARV(G16; Productores!A:F; 5); "")-37,90249)))>0; 6371*ACOS(COS(RADIANES(90-IFNA(BUSCARV(G16; Productores!A:F; 6); "")))*COS(RADIANES(90-(-4,724924)))+SENO(RADIANES(90-IFNA(BUSCARV(G63; Productores!A:F; 6); "")))*SENO(RADIANES(90-(-4,724924)))*COS(RADIANES(IFNA(BUSCARV(G16; Productores!A:F; 5); "")-37,90249))))';
+    var DistanciaTotal = '=IFS(A16=""; ""; J16+K16>0; J16+K16)';
+    var CosteTransporte = '=IFS(A15=""; ""; IFNA(BUSCARV(I15;Transportes!A:D;4);"")*L15>0; IFNA(BUSCARV(I15;Transportes!A:D;4);"")*L15)';
+    var CosteTotal = '=IFS(A14=""; ""; SUMA(F14;H14;M14)>0; SUMA(F14;H14;M14))';
+    
+    idPedido = idPedido.replaceAll("B17", "B" + contador);
+    nombre = nombre.replaceAll("B18", "B" + contador);
+    costeCompra = costeCompra.replaceAll("A15", "A" + contador);
+    costeCompra = costeCompra.replaceAll("B15", "B" + contador);
+    costeCompra = costeCompra.replaceAll("D15", "D" + contador);
+    costeCompra = costeCompra.replaceAll("E15", "E" + contador);
+    costeProcesamiento = costeProcesamiento.replaceAll("A16", "A" + contador);
+    costeProcesamiento = costeProcesamiento.replaceAll("B16", "B" + contador);
+    costeProcesamiento = costeProcesamiento.replaceAll("D16", "D" + contador);
+    costeProcesamiento = costeProcesamiento.replaceAll("G16", "G" + contador);
+    distanciaProv = distanciaProv.replaceAll("A16", "A" + contador);
+    distanciaProv = distanciaProv.replaceAll("E16", "E" + contador);
+    distanciaProv = distanciaProv.replaceAll("G16", "G" + contador);
+
+    distanciaProdAlmacen = distanciaProdAlmacen.replaceAll("A16", "A" + contador);
+    distanciaProdAlmacen = distanciaProdAlmacen.replaceAll("G16", "G" + contador);
+    
+    DistanciaTotal = DistanciaTotal.replaceAll("A16", "A" + contador);
+    DistanciaTotal = DistanciaTotal.replaceAll("J16", "J" + contador);
+    DistanciaTotal = DistanciaTotal.replaceAll("K16", "K" + contador);
+
+    CosteTransporte = CosteTransporte.replaceAll("A15", "A" + contador);
+    CosteTransporte = CosteTransporte.replaceAll("I15", "I" + contador);
+    CosteTransporte = CosteTransporte.replaceAll("L15", "L" + contador);
+
+    CosteTotal = CosteTotal.replaceAll("A14", "A" + contador);
+    CosteTotal = CosteTotal.replaceAll("F14", "F" + contador);
+    CosteTotal = CosteTotal.replaceAll("H14", "H" + contador);
+    CosteTotal = CosteTotal.replaceAll("M14", "M" + contador);
+
+   const request = {
+       ID_Pedido: idPedido,
+       ID_Producto: document.getElementById('idProducto').value,
+       Nombre: nombre,
+       Unidades: document.getElementById('unidades').value,
+       ID_Proveedor: document.getElementById('idproveedor').value,
+       Coste_Compra: costeCompra,
+       ID_Productor: document.getElementById('idproductor').value,
+       Coste_Procesamiento: costeProcesamiento,
+       ID_Transporte: document.getElementById('idtransporte').value,
+       Distancia_Prov_Prod: distanciaProv,
+       Distancia_Prod_Almacen: distanciaProdAlmacen,
+       Distancia_Total: DistanciaTotal,
+       Coste_Transporte: CosteTransporte,
+       Coste_Total: CosteTotal,
+       Estado: "PROVEEDOR",
+ };
+
+ // Add one line to the sheet
+ fetch("https://sheet.best/api/sheets/ad746c9f-c247-4447-8eb9-4e2e1b84d6c0/tabs/Pedidos", {
+   method: "POST",
+   mode: "cors",
+   headers: {
+     "Content-Type": "application/json",
+   },
+   body: JSON.stringify(request),
+ })
+   .then((r) => r.json())
+   .then((data) => {
+       console.log(data);
+     alert("Insertado Correctamente");
+   })
+   .catch((error) => {
+     // Errors are reported there
+     console.log(error);
+     console.log("ERROR: al insertar");
+   });
+
+    
+    });
+
+
+  
+
+    }
+
+  
+</script>
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- bs-custom-file-input -->
+<script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<script src="https://sbt.0soft.dev/sheet-best-templates.min.js"></script>
+</body>
+</html>

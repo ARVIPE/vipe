@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>Productos en Fabricación - AdminLTE</title>
+	<!-- Bootstrap 4 -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<!-- AdminLTE -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+	<!-- Tarjeta de producción -->
+	<div class="card">
+		<div class="card-body">
+            <button class="btn btn-primary" onclick="window.location='../../index.html'" style="float:right;">Volver</button> 
+		</div>
+	</div>
+
+	<!-- Tabla de productos en fabricación -->
+	<div class="container-fluid mt-3">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<h3 class="card-title">Productos en Fabricación</h3>
+					</div>
+					<div class="card-body">
+						<table class="table table-bordered table-striped" >
+							<thead>
+								<tr>
+									<th>Producto</th>
+									<th>Unidades</th>
+									<th>Coste Total</th>
+									<th>Estado</th>
+								</tr>
+							</thead>
+							<tbody data-sheet-best="https://sheet.best/api/sheets/ad746c9f-c247-4447-8eb9-4e2e1b84d6c0/tabs/Pedidos/query?Estado=ENVIADO">
+								<tr>
+									<td>{{ Nombre }}</td>
+									<td>{{ Unidades }}</td>
+									<td>{{ Coste_Total }}</td>
+									<td>
+										<span class="badge bg-warning">Enviado</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    </body>
+    <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- AdminLTE -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/js/adminlte.min.js"></script>
+<script src="https://sbt.0soft.dev/sheet-best-templates.min.js"></script>
+
+
+<script>
+
+    
+</script>
+</html>
