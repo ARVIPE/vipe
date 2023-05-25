@@ -33,7 +33,7 @@
                     <div class="card-body">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Nombre</label>
-                        <select class="form-control" id="idProducto" data-sheet-best="https://sheet.best/api/sheets/92059a58-190b-4d6e-bb8a-637fab071539/tabs/Productos">
+                        <select class="form-control" id="idProducto" data-sheet-best="https://sheet.best/api/sheets/8706d029-a2f6-45e4-a60a-29080b9ae769/tabs/Productos">
                             {% productos.forEach(producto => { %}
                             <option value="{{ ID_Producto }}">{{ Nombre }}</option>
                             {% }); %}
@@ -45,7 +45,7 @@
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Empresa</label>
-                        <select class="form-control" id="idproveedor" data-sheet-best="https://sheet.best/api/sheets/92059a58-190b-4d6e-bb8a-637fab071539/tabs/Proveedores">
+                        <select class="form-control" id="idproveedor" data-sheet-best="https://sheet.best/api/sheets/8706d029-a2f6-45e4-a60a-29080b9ae769/tabs/Proveedores">
                             {% productos.forEach(producto => { %}
                             <option value="{{ ID_Proveedor }}">{{ Empresa }}</option>
                             {% }); %}
@@ -53,7 +53,7 @@
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Productor</label>
-                        <select class="form-control" id="idproductor"  data-sheet-best="https://sheet.best/api/sheets/92059a58-190b-4d6e-bb8a-637fab071539/tabs/Productores">
+                        <select class="form-control" id="idproductor"  data-sheet-best="https://sheet.best/api/sheets/8706d029-a2f6-45e4-a60a-29080b9ae769/tabs/Productores">
                             {% productos.forEach(producto => { %}
                             <option value="{{ ID_Productor }}">{{ Empresa }}</option>
                             {% }); %}
@@ -61,7 +61,7 @@
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Transporte</label>
-                        <select class="form-control" id="idtransporte" data-sheet-best="https://sheet.best/api/sheets/92059a58-190b-4d6e-bb8a-637fab071539/tabs/Transportes">
+                        <select class="form-control" id="idtransporte" data-sheet-best="https://sheet.best/api/sheets/8706d029-a2f6-45e4-a60a-29080b9ae769/tabs/Transportes">
                             {% productos.forEach(producto => { %}
                             <option value="{{ ID_Transporte }}">{{ Empresa }} -- {{ Medio }}</option>
                             {% }); %}
@@ -90,7 +90,7 @@
 
     var contador = 2;
 
-    fetch("https://sheet.best/api/sheets/b30a3d7a-d7eb-45d3-9207-f48948bc15f5/tabs/Pedidos", {
+    fetch("https://sheet.best/api/sheets/8706d029-a2f6-45e4-a60a-29080b9ae769/tabs/Pedidos", {
     method: "GET",
     mode: "cors",
     headers: {
@@ -162,7 +162,7 @@
  };
 
  // Add one line to the sheet
- fetch("https://sheet.best/api/sheets/b30a3d7a-d7eb-45d3-9207-f48948bc15f5/tabs/Pedidos", {
+ fetch("https://sheet.best/api/sheets/8706d029-a2f6-45e4-a60a-29080b9ae769/tabs/Pedidos", {
    method: "POST",
    mode: "cors",
    headers: {

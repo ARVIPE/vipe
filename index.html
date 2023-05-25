@@ -435,7 +435,7 @@
     var arrayPrice = [];
 
     function fetchData() {
-      fetch("https://sheet.best/api/sheets/b30a3d7a-d7eb-45d3-9207-f48948bc15f5/tabs/Productos?_row=1")
+      fetch("https://sheet.best/api/sheets/8706d029-a2f6-45e4-a60a-29080b9ae769/tabs/Productos?_row=1")
         .then((response) => response.json())
         .then((data) => {
           array = [];
@@ -462,7 +462,7 @@
         });
 
       fetch(
-        "https://sheet.best/api/sheets/b30a3d7a-d7eb-45d3-9207-f48948bc15f5/tabs/Productos/query?Stock=__gt(0)"
+        "https://sheet.best/api/sheets/8706d029-a2f6-45e4-a60a-29080b9ae769/tabs/Productos/query?Stock=__gt(0)"
       )
         .then((response) => response.json())
         .then((data) => {
@@ -476,7 +476,7 @@
         });
 
       fetch(
-        "https://sheet.best/api/sheets/b30a3d7a-d7eb-45d3-9207-f48948bc15f5/tabs/Pedidos/query?Estado=FÁBRICA"
+        "https://sheet.best/api/sheets/8706d029-a2f6-45e4-a60a-29080b9ae769/tabs/Pedidos/query?Estado=FÁBRICA"
       )
         .then((response) => response.json())
         .then((data) => {
@@ -490,7 +490,7 @@
         });
 
       fetch(
-        "https://sheet.best/api/sheets/b30a3d7a-d7eb-45d3-9207-f48948bc15f5/tabs/Pedidos/query?Estado=ENVIADO"
+        "https://sheet.best/api/sheets/8706d029-a2f6-45e4-a60a-29080b9ae769/tabs/Pedidos/query?Estado=ENVIADO"
       )
         .then((response) => response.json())
         .then((data) => {
@@ -504,7 +504,7 @@
         });
 
       fetch(
-        "https://sheet.best/api/sheets/b30a3d7a-d7eb-45d3-9207-f48948bc15f5/tabs/Pedidos/query?Estado=PROVEEDOR"
+        "https://sheet.best/api/sheets/8706d029-a2f6-45e4-a60a-29080b9ae769/tabs/Pedidos/query?Estado=PROVEEDOR"
       )
         .then((response) => response.json())
         .then((data) => {
@@ -560,7 +560,7 @@
 
       var ProdArray = [];
       var ProdPriceArray = [];
-      fetch("https://sheet.best/api/sheets/b30a3d7a-d7eb-45d3-9207-f48948bc15f5/tabs/Productos")
+      fetch("https://sheet.best/api/sheets/8706d029-a2f6-45e4-a60a-29080b9ae769/tabs/Productos")
         .then((response) => response.json())
         .then((data) => {
           const ProdArray = [];
@@ -633,7 +633,7 @@
         });
 
 
-      fetch("https://sheet.best/api/sheets/b30a3d7a-d7eb-45d3-9207-f48948bc15f5/tabs/Proveedores")
+      fetch("https://sheet.best/api/sheets/8706d029-a2f6-45e4-a60a-29080b9ae769/tabs/Proveedores")
         .then((response) => response.json())
         .then((data) => {
           const TranArray = [];
@@ -679,7 +679,7 @@
 
 
 
-      fetch("https://sheet.best/api/sheets/b30a3d7a-d7eb-45d3-9207-f48948bc15f5/tabs/Productores")
+      fetch("https://sheet.best/api/sheets/8706d029-a2f6-45e4-a60a-29080b9ae769/tabs/Productores")
         .then((response) => response.json())
         .then((data) => {
           const ProductorArray = [];
@@ -727,7 +727,7 @@
       var contadorEntre18y30 = 0;
       var contadorEntre30y60 = 0;
       var contador60oMas = 0;
-      fetch("https://sheet.best/api/sheets/b30a3d7a-d7eb-45d3-9207-f48948bc15f5/tabs/Opiniones/Edad/*Entre%2018%20y%2030*")
+      fetch("https://sheet.best/api/sheets/8706d029-a2f6-45e4-a60a-29080b9ae769/tabs/Opiniones/Edad/*Entre%2018%20y%2030*")
         .then((response) => response.json())
         .then((data) => {
 
@@ -739,7 +739,7 @@
           AgeArray.push(contadorEntre18y30);
 
 
-          fetch("https://sheet.best/api/sheets/b30a3d7a-d7eb-45d3-9207-f48948bc15f5/tabs/Opiniones/Edad/*Entre%2030%20y%2060*")
+          fetch("https://sheet.best/api/sheets/8706d029-a2f6-45e4-a60a-29080b9ae769/tabs/Opiniones/Edad/*Entre%2030%20y%2060*")
             .then((response) => response.json())
             .then((data1) => {
 
@@ -750,7 +750,7 @@
 
               AgeArray.push(contadorEntre30y60);
 
-              fetch("https://sheet.best/api/sheets/b30a3d7a-d7eb-45d3-9207-f48948bc15f5/tabs/Opiniones/Edad/*60%20o%20más*")
+              fetch("https://sheet.best/api/sheets/8706d029-a2f6-45e4-a60a-29080b9ae769/tabs/Opiniones/Edad/*60%20o%20más*")
                 .then((response) => response.json())
                 .then((data2) => {
 
@@ -797,7 +797,7 @@
       var Excelente = 0;
       var Bueno = 0;
       var Malo = 0;
-      fetch("https://sheet.best/api/sheets/b30a3d7a-d7eb-45d3-9207-f48948bc15f5/tabs/Opiniones")
+      fetch("https://sheet.best/api/sheets/8706d029-a2f6-45e4-a60a-29080b9ae769/tabs/Opiniones")
         .then((response) => response.json())
         .then((data) => {
 
